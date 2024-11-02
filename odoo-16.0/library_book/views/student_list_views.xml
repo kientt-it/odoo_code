@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_student_form" model="ir.ui.view">
+        <field name="name">Student Form</field>
+        <field name="model">list.student</field>
+        <field name="arch" type="xml">
+            <form string="Students">
+                <sheet>
+                    <group>
+                        <field name="student_code" string="Student Code"/>
+                        <field name="name" string="Full Name"/>
+                        <field name="book_ids" string="Borrowed Book"/>
+                        <field name="email" string="Email"/>
+                        <field name="phone" string="Phone"/>
+                        <field name="is_student" string="Is a Student"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_student_tree" model="ir.ui.view">
+        <field name="name">Student Tree</field>
+        <field name="model">list.student</field>
+        <field name="arch" type="xml">
+            <tree string="Students">
+                <field name="student_code" string="Student Code"/>
+                <field name="name" string="Full Name"/>
+                <field name="email" string="Email"/>
+                <field name="phone" string="Phone"/>
+                <field name="book_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_student_borrowed_search" model="ir.ui.view">
+        <field name="name">Student Borrowed Search</field>
+        <field name="model">list.student</field>
+        <field name="arch" type="xml">
+            <search string="Search Students">
+                <field name="name"/>
+                <field name="student_code"/>
+                <filter string="Has Borrowed Books" name="book_count" domain="[('book_count', '>', 0)]"/>
+            </search>
+        </field>
+    </record>
+</odoo>

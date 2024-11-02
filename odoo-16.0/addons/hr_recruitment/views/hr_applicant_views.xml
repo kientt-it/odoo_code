@@ -1,0 +1,26 @@
+<odoo>
+    <record id="view_applicant_form_inherit_status_details" model="ir.ui.view">
+        <field name="name">hr.applicant.form.inherit.status.details</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//sheet/group/group/field[@name='priority']" position="after">
+                <field name="detailed_status_id" />
+             </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Information">
+                    <group>
+                        <field name="graduated_school"/>
+                        <field name="gpa_10_scale"/>
+                        <field name="gpa_4_scale" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//header" position="inside">
+                <button name="action_accept" type="object" string="Reception" class="btn btn-primary"/>
+<!--                <button name="action_accept" type="object" string="Refuse" class="btn btn-danger"/>-->
+            </xpath>
+        </field>
+    </record>
+</odoo>
